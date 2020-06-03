@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 /** GET / */
 app.get('/', (req, res) => {
-    res.send("BAD API Try sending a GET request to: /server-name")
+    res.send(" GOOD API Try sending a GET request to: /server-name")
 })
 
 /** GET /server-name for a random server name */
@@ -20,7 +20,7 @@ app.get('/server-name', (req, res) => {
 /** POST /server-name to post a new word into the collection */
 app.post('/server-name', (req, res) => {
     if(req.body.hasOwnProperty("newWord") && req.body.hasOwnProperty("type")){
-        res.send({word: `${req.body.newWord}`, type: `${req.body.type}`})
+        res.send({newWord: `${req.body.newWord}`, type: `${req.body.type}`})
     } else {
         res.status(500)
         res.send({error: "Invalid request body"})
