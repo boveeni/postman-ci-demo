@@ -7,6 +7,11 @@ random = require('./randomName')
 /** Add body parser middleware */
 app.use(bodyParser.json())
 
+/** GET / */
+app.get('/', (req, res) => {
+    res.send("Try /server-name")
+})
+
 /** GET /server-name for a random server name */
 app.get('/server-name', (req, res) => {
     res.send({name: random.getRandomName()})
