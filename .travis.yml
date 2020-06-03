@@ -14,3 +14,8 @@ before_script:
 
 script:
 - node_modules/.bin/newman run tests/postman-demo-tests.postman_collection.json
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: HEROKU_API
