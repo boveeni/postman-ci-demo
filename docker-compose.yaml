@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo'
+    container_name: 'postman-mongo-db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=nicbovee
+      - MONGO_INITDB_ROOT_PASSWORD=Password!
+    volumes:
+      - init-mongo:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongo-volume:/data/db
+    ports:
+      - '5017-5019:27017-27019'
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: nicbovee
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Password!
+
+volumes:
+  init-mongo:
+  mongo-volume:

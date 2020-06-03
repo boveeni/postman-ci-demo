@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "cd2c6e7e-b3f9-4ee5-9440-18b58e8a95e8",
+		"name": "Postman Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get a server name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "928e9931-086d-46a9-9602-c14e20b042d5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    jsonData = pm.response.json(),\r",
+							"    schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"name\": \"fascinating-sentinel\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"name\"\r",
+							"    ],\r",
+							"    \"additionalProperties\": true,\r",
+							"    \"properties\": {\r",
+							"        \"name\": {\r",
+							"            \"$id\": \"#/properties/name\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The name schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"fascinating-sentinel\"\r",
+							"            ]\r",
+							"        }\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test('Schema is valid', function() {\r",
+							"    pm.expect(ajv.validate(schema, jsonData)).to.be.true\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/server-name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"server-name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new word",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c53fa98b-c71f-4e49-8c32-75938f6b2a01",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    jsonData = pm.response.json(),\r",
+							"    schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"newWord\": \"spicy\",\r",
+							"            \"type\": \"adjective\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"newWord\",\r",
+							"        \"type\"\r",
+							"    ],\r",
+							"    \"additionalProperties\": true,\r",
+							"    \"properties\": {\r",
+							"        \"newWord\": {\r",
+							"            \"$id\": \"#/properties/newWord\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The newWord schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"spicy\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"type\": {\r",
+							"            \"$id\": \"#/properties/type\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The type schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"adjective\"\r",
+							"            ]\r",
+							"        }\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"pm.test('Schema is valid', function() {\r",
+							"    pm.expect(ajv.validate(schema, jsonData)).to.be.true\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"newWord\": \"spicy\",\n\t\"type\": \"adjective\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/server-name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"server-name"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
