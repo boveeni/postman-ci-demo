@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 /** GET / */
 app.get('/', (req, res) => {
-    res.send("Try /server-name")
+    res.send("Try sending a GET request to: /server-name")
 })
 
 /** GET /server-name for a random server name */
