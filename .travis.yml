@@ -10,7 +10,7 @@ before_script:
 - node --version
 - npm --version
 - node_modules/.bin/newman --version
+- yarn start
 
 script:
 - node_modules/.bin/newman run tests/postman-demo-tests.postman_collection.json
-- yarn start
