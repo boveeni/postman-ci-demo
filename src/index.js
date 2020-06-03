@@ -1,6 +1,6 @@
 const express = require('express'),
 app = express(),
-port = 3000
+port = 80
 bodyParser = require('body-parser'),
 random = require('./randomName')
 
