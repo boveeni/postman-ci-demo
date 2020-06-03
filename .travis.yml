@@ -4,6 +4,7 @@ node_js:
 
 install:
 - npm install newman
+- yarn
 
 before_script:
 - node --version
@@ -12,3 +13,4 @@ before_script:
 
 script:
 - node_modules/.bin/newman run tests/postman-demo-tests.postman_collection.json
+- yarn start
