@@ -1,6 +1,5 @@
 language: node_js
-node_js:
-- "node"
+node_js: "node"
 
 install:
 - npm install newman
@@ -10,9 +9,9 @@ before_script:
 - node --version
 - npm --version
 - node_modules/.bin/newman --version
-- yarn start
 
 script:
+- node ./src/index.js &
 - node_modules/.bin/newman run tests/postman-demo-tests.postman_collection.json
 
 deploy:
